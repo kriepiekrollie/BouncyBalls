@@ -1,9 +1,12 @@
 canvas = document.getElementById("cnvs");
 ctx = canvas.getContext("2d");
+
+width = window.innerWidth;
+height = window.innerHeight;
 function clear(){
     ctx.fillStyle = '#000000';
     ctx.strokeStyle = '#000000';
-    ctx.fillRect(0,0,2000,2000);
+    ctx.fillRect(0,0,width,height);
 }
 
 function draw_ball(b){
@@ -67,15 +70,22 @@ function Collide(i, j){
     Balls[j].vel.x = tx * dptan2 + nx * m2;
     Balls[j].vel.y = ty * dptan2 + ny * m2;
 
-    Balls[i].pos.x += newVelX1;
-    Balls[i].pos.y += newVelY1;
-    Balls[j].pos.x += newVelX2;
-    Balls[j].pos.y += newVelY2;
+    Balls[i].pos.x += Balls[i].vel.x;
+    Balls[i].pos.y += Balls[i].vel.y;
+    Balls[j].pos.x += Balls[j].vel.x;
+    Balls[j].pos.y += Balls[j].vel.y;
 }
 
 function loop(){
-    width = window.innerWidth;
-    height = window.innerHeight;
+    if (width != window.innerWidth){
+        width = window.innerWidth;
+        canvas.width = width;
+    }
+    if (height != window.innerHeight){
+        height = window.innerHeight;
+        canvas.height = height;
+    }
+    canvas.height = height;
     for (i = 0; i < N; i++)
         Balls[i].updatePos();
 
