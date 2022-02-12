@@ -24,7 +24,7 @@ function RandomRange(min, max){
 N = 7
 Balls = [];
 for (i = 0; i < N; i++){
-    Balls.push(new ball(RandomRange(50,100)));
+    Balls.push(new ball(RandomRange(height/20,height/10)));
     Balls[i].pos = {x:RandomRange(100,900), y:RandomRange(100,700)};
     Balls[i].vel = {x:RandomRange(-8,8), y:RandomRange(-8,8)};
 }
