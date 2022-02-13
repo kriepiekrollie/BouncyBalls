@@ -24,8 +24,9 @@ function RandomRange(min, max){
 N = 7
 Balls = [];
 for (i = 0; i < N; i++){
-    Balls.push(new ball(RandomRange(height/20,height/10)));
-    Balls[i].pos = {x:RandomRange(100,900), y:RandomRange(100,700)};
+    R = RandomRange(height/20,height/10);
+    Balls.push(new ball(R));
+    Balls[i].pos = {x:RandomRange(R,width-R), y:RandomRange(R,height-R)};
     Balls[i].vel = {x:RandomRange(-8,8), y:RandomRange(-8,8)};
 }
 
@@ -39,7 +40,8 @@ while (foundC){
             sr = Balls[i].r + Balls[j].r;
             if (dx*dx+dy*dy <= sr*sr) {
                 foundC = true;
-                Balls[j].pos = {x:RandomRange(100,900), y:RandomRange(100,700)};
+                R = Balls[j].r;
+                Balls[j].pos = {x:RandomRange(R,width-R), y:RandomRange(R,height-R)};
             }
         }
 }
